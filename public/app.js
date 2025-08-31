@@ -1,5 +1,5 @@
 // --- Set up the connection to our backend API ---
-const API_URL = 'http://127.0.0.1:8000';
+const API_URL = "https://cogni-chat.onrender.com";
 
 // --- Get references to all the HTML elements ---
 const ingestButton = document.getElementById('ingest-button');
