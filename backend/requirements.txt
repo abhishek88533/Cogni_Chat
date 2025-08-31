@@ -1,0 +1,15 @@
+# File: backend/requirements.txt
+
+# Web framework for creating the API
+fastapi
+uvicorn[standard]
+
+# AI and Data processing libraries
+pinecone
+langchain
+google-generativeai
+langchain-google-genai
+cohere
+
+#For loading settongs from .env file
+pydantic-settings

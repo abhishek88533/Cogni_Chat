@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CogniChat - Your Document AI</title>
+    <!-- Import the new font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <!-- Main container for the app -->
+    <div class="app-container">
+        <header>
+            <h1>CogniChat</h1>
+            <p>Your Intelligent Document Assistant</p>
+        </header>
+
+        <!-- Two-column layout -->
+        <div class="main-content">
+            
+            <!-- Left Panel for Inputs -->
+            <div class="left-panel">
+                <div class="card" id="ingest-card">
+                    <h2>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                        Add to Knowledge Base
+                    </h2>
+                    <p>Provide a document for the AI to learn from.</p>
+                    <input type="text" id="source-name" placeholder="Document Name (e.g., 'solar-system')">
+                    <textarea id="text-input" rows="8" placeholder="Paste your document text here..."></textarea>
+                    <button id="ingest-button">Ingest Document</button>
+                </div>
+
+                <div class="card" id="query-card">
+                    <h2>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                        Ask a Question
+                    </h2>
+                    <p>Query the knowledge base with your question.</p>
+                    <input type="text" id="query-input" placeholder="e.g., What binds the Solar System together?">
+                    <button id="query-button">Get Answer</button>
+                </div>
+            </div>
+
+            <!-- Right Panel for Results -->
+            <div class="right-panel">
+                <div class="card" id="results-card">
+                    <h2>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                        Results
+                    </h2>
+                    <div id="loading-spinner" class="hidden"></div>
+                    <div id="results-placeholder">
+                        <p>Your results will appear here...</p>
+                    </div>
+                    
+                    <div id="answer-container" class="hidden">
+                        <h3>Answer</h3>
+                        <p id="answer-text"></p>
+                    </div>
+
+                    <div id="sources-container" class="hidden">
+                        <h3>Cited Sources</h3>
+                        <div id="sources-list"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Element for our new 'toast' notifications -->
+    <div id="toast" class=""></div>
+
+</body>
+</html>
+

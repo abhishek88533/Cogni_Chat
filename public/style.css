@@ -1,0 +1,233 @@
+/* --- Global Styles & Variables --- */
+:root {
+    --primary-color: #6a82fb;
+    --secondary-color: #fc5c7d;
+    --text-color: #ffffff;
+    --subtle-text-color: #e0e0e0;
+    --card-bg-color: rgba(255, 255, 255, 0.1);
+    --card-border-color: rgba(255, 255, 255, 0.2);
+    --input-bg-color: rgba(0, 0, 0, 0.2);
+    --success-color: #4CAF50;
+    --error-color: #F44336;
+}
+
+body {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: linear-gradient(135deg, #360033, #0b8793);
+    color: var(--text-color);
+    line-height: 1.6;
+    margin: 0;
+    padding: 2rem;
+    min-height: 100vh;
+}
+
+/* --- Main Layout & Header --- */
+.app-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+header h1 {
+    font-size: 3rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+header p {
+    font-size: 1.2rem;
+    color: var(--subtle-text-color);
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+/* Responsive Two-Column Layout for larger screens */
+@media (min-width: 992px) {
+    .main-content {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.left-panel, .right-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* --- "Glassmorphism" Card Style --- */
+.card {
+    background: var(--card-bg-color);
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid var(--card-border-color);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* For Safari */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card h2 {
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.5rem;
+    border-bottom: 1px solid var(--card-border-color);
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.card h2 svg {
+    color: var(--primary-color);
+}
+
+.card p {
+    color: var(--subtle-text-color);
+}
+
+
+/* --- Polished Form Elements --- */
+input[type="text"], textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid var(--card-border-color);
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 1.5rem;
+    box-sizing: border-box;
+    background: var(--input-bg-color);
+    color: var(--text-color);
+    transition: box-shadow 0.2s ease;
+}
+
+input[type="text"]::placeholder, textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+input[type="text"]:focus, textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--primary-color);
+}
+
+textarea {
+    resize: vertical;
+}
+
+button {
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    width: 100%;
+    letter-spacing: 0.5px;
+}
+
+button:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transform: translateY(-3px);
+}
+
+button:disabled {
+    background: #555;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* --- Stylish Results Section --- */
+.hidden { display: none !important; }
+
+#results-placeholder p {
+    text-align: center;
+    font-size: 1.1rem;
+    padding: 3rem 0;
+    color: var(--subtle-text-color);
+}
+
+#answer-container h3, #sources-container h3 {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+#answer-text {
+    background-color: rgba(0, 0, 0, 0.15);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-left: 4px solid var(--primary-color);
+    white-space: pre-wrap;
+    color: var(--text-color);
+}
+
+.source-item {
+    background-color: rgba(0, 0, 0, 0.15);
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    border: 1px solid var(--card-border-color);
+    font-size: 0.9rem;
+    color: var(--subtle-text-color);
+}
+
+.source-item strong {
+    color: var(--secondary-color);
+}
+
+/* --- Loading Spinner --- */
+#loading-spinner {
+    border: 5px solid rgba(255, 255, 255, 0.2);
+    border-top: 5px solid var(--primary-color);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 3rem auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* --- Toast Notification Styling --- */
+#toast {
+    position: fixed;
+    bottom: -100px; /* Start off-screen */
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: 500;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: bottom 0.5s ease-in-out;
+    z-index: 1000;
+}
+
+#toast.show {
+    bottom: 30px; /* Slide into view */
+}
+
+#toast.success {
+    background-color: var(--success-color);
+}
+
+#toast.error {
+    background-color: var(--error-color);
+}
+
